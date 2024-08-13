@@ -16,14 +16,14 @@ namespace OnlineJobPortal.Controllers
             _applicationRepository = applicationRepository;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetAllApplications")]
         public async Task<IActionResult> GetAllApplications()
         {
             var result = await _applicationRepository.GetAllApplicationsAsync();
             return Ok(result);
         }
 
-        [HttpGet("{ApplicationID}")]
+        [HttpGet("GetApplicationByID/{ApplicationID}")]
         public async Task<IActionResult> GetApplicationById(int ApplicationID)
         {
             var result = await _applicationRepository.GetApplicationByIdAsync(ApplicationID);
@@ -34,7 +34,7 @@ namespace OnlineJobPortal.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost("AddApplication")]
         public async Task<IActionResult> AddApplication([FromBody] Application application)
         {
             var id = await _applicationRepository.AddApplicationAsync(application);
@@ -48,14 +48,14 @@ namespace OnlineJobPortal.Controllers
             return Ok("Application Added");
         }
 
-        [HttpPut("/application/{ApplicationID}")]
+        [HttpPut("UpdateApplication/{ApplicationID}")]
         public async Task<IActionResult> UpdateApplication([FromRoute] int ApplicationID, [FromBody] Application application)
         {
             await _applicationRepository.UpdateApplicationByIDAsync(ApplicationID, application);
             return Ok("Update Successful");
         }
 
-        [HttpDelete("deleteApplication/{ApplicationID}")]
+        [HttpDelete("DeleteApplication/{ApplicationID}")]
         public async Task<IActionResult> DeleteApplication([FromRoute] int ApplicationID)
         {
             await _applicationRepository.DeleteApplicationByIDAsync(ApplicationID);

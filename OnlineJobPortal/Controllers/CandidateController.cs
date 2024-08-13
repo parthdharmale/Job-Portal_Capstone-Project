@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Models;
 using OnlineJobPortal.Repository;
@@ -16,14 +17,14 @@ namespace OnlineJobPortal.Controllers
             _candidateRepository = candidateRepository;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetAllCandidates")]
         public async Task<IActionResult> GetAllCandidates()
         {
             var result = await _candidateRepository.GetAllCandidatesAsync();
             return Ok(result);
         }
 
-        [HttpGet("{CID}")]
+        [HttpGet("GetCandidateByID/{CID}")]
         public async Task<IActionResult> GetCandidateByID(int CID)
         {
             var result = await _candidateRepository.GetCandidateByIdAsync(CID);
@@ -36,7 +37,7 @@ namespace OnlineJobPortal.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost("AddCandidate")]
         public async Task<IActionResult> AddCandidate([FromBody] Candidate candidate)
         {
             var id = await _candidateRepository.AddCandidateAsync(candidate);
@@ -48,15 +49,13 @@ namespace OnlineJobPortal.Controllers
 
             return Ok("Candidate Added");
         }
-
-        [HttpPut("/candidate/{CID}")]
-        public async Task<IActionResult> UpdateCandidate([FromRoute] int CID, [FromBody] Candidate candidate)
+        [HttpPut("/UpdateCandidate/{CID}")]
+        public async Task<IActionResult> UpdateCandidate([FromRoute] int CID, [FromBody] JsonPatchDocument candidate)
         {
             await _candidateRepository.UpdateCandidateByIDAsync(CID, candidate);
             return Ok("Update SAuccesful");
         }
-
-        [HttpDelete("deleteCandidate/{CID}")]
+        [HttpDelete("DeleteCandidate/{CID}")]
         public async Task<IActionResult> DeleteCandidate([FromRoute] int CID)
         {
             await _candidateRepository.DeleteCandidateByIDAsync(CID);

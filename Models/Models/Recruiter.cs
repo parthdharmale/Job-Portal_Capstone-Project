@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace OnlineJobPortal.Models
 {
@@ -16,6 +17,8 @@ namespace OnlineJobPortal.Models
         [Required]
         [Phone]
         public string Contact { get; set; }
+        [JsonIgnore]
+        public List<Job> Jobs { get; set; }
 
     }
 }

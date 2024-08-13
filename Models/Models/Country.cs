@@ -14,7 +14,6 @@ namespace OnlineJobPortal.Models
         public List<State> States { get; set; }
         [JsonIgnore]
         public List<Candidate> Candidates { get; set; }
-        public List<Recruiter> Recruiters { get; set; }
 
     }
 }
