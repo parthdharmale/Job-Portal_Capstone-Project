@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Models;
 using OnlineJobPortal.Repository;
@@ -48,14 +49,12 @@ namespace OnlineJobPortal.Controllers
 
             return Ok("Candidate Added");
         }
-
         [HttpPut("/UpdateCandidate/{CID}")]
-        public async Task<IActionResult> UpdateCandidate([FromRoute] int CID, [FromBody] Candidate candidate)
+        public async Task<IActionResult> UpdateCandidate([FromRoute] int CID, [FromBody] JsonPatchDocument candidate)
         {
             await _candidateRepository.UpdateCandidateByIDAsync(CID, candidate);
             return Ok("Update SAuccesful");
         }
-
         [HttpDelete("DeleteCandidate/{CID}")]
         public async Task<IActionResult> DeleteCandidate([FromRoute] int CID)
         {

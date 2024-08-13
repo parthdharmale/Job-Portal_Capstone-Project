@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Data;
 using OnlineJobPortal.Models;
 using System;
@@ -111,33 +112,15 @@ namespace OnlineJobPortal.Repository
 
             return newCandidate.CID;
         }
-
-        public async Task UpdateCandidateByIDAsync(int CID, Candidate candidate)
+        public async Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument Candidates)
         {
-            var updatedCandidate = await _context.Candidates.FindAsync(CID);
-
-            if (updatedCandidate != null)
+            var updateCandidate = await _context.Candidates.FindAsync(CID);
+            if (updateCandidate != null)
             {
-                updatedCandidate.CID = candidate.CID;
-                updatedCandidate.FirstName = candidate.FirstName;
-                updatedCandidate.LastName = candidate.LastName;
-                updatedCandidate.Email = candidate.Email;
-                updatedCandidate.Password = candidate.Password;
-                updatedCandidate.DOB = candidate.DOB;
-                updatedCandidate.Address = candidate.Address;
-                updatedCandidate.Contact = candidate.Contact;
-                updatedCandidate.CityID = candidate.CityID;
-                updatedCandidate.Education1 = candidate.Education1;
-                updatedCandidate.Education2 = candidate.Education2;
-                updatedCandidate.Education3 = candidate.Education3;
-                updatedCandidate.Workex1 = candidate.Workex1;
-                updatedCandidate.Workex2 = candidate.Workex2;
-                updatedCandidate.Workex3 = candidate.Workex3;
+                Candidates.ApplyTo(updateCandidate);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
         }
-
         public async Task DeleteCandidateByIDAsync(int CID)
         {
             var deletedCandidate = new Candidate()
