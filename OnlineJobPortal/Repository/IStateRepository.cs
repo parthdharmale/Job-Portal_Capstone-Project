@@ -6,7 +6,7 @@ namespace OnlineJobPortal.Repository
     {
         Task<List<State>> GetAllStateAsync();
 
-        Task<Country> GetStateByIdAsync(int StateID);
+        Task<State> GetStateByIdAsync(int StateID);
         Task<int> AddStateAsync(State state);
 
         Task UpdateStateByIDAsync(int StateID, State state);

@@ -6,7 +6,7 @@ namespace OnlineJobPortal.Repository
     {
         Task<List<City>> GetAllCityAsync();
 
-        Task<Country> GetCityByIdAsync(int CityID);
+        Task<City> GetCityByIdAsync(int CityID);
         Task<int> AddCityAsync(City city);
 
         Task UpdateCityByIDAsync(int CityID, City city);

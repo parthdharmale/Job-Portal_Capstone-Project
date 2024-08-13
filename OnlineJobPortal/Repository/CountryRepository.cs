@@ -53,7 +53,7 @@ namespace OnlineJobPortal.Repository
 
             if(updatedCountry != null)
             {
-                updatedCountry.CountryID = country.CountryID;
+                //updatedCountry.CountryID = country.CountryID;
                 updatedCountry.CountryName = country.CountryName;
 
             }

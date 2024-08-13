@@ -12,6 +12,7 @@ namespace OnlineJobPortal.Models
         [MaxLength(100)]
         public string StateName { get; set; }
 
+        //add foreign key
         [Required]
         public int CountryID { get; set; }
 

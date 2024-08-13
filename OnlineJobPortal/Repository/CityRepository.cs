@@ -4,7 +4,7 @@ using OnlineJobPortal.Models;
 
 namespace OnlineJobPortal.Repository
 {
-    public class CityRepository
+    public class CityRepository : ICityRepository
     {
         private readonly ApplicationDbContext _context;
         public CityRepository(ApplicationDbContext context)
@@ -56,7 +56,7 @@ namespace OnlineJobPortal.Repository
 
             if (updatedCity != null)
             {
-                updatedCity.CityID = city.CityID;
+                //updatedCity.CityID = city.CityID;
                 updatedCity.CityName = city.CityName;
                 updatedCity.StateID = city.StateID;
 

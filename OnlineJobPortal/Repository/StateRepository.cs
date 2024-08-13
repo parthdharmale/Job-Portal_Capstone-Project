@@ -4,7 +4,7 @@ using OnlineJobPortal.Models;
 
 namespace OnlineJobPortal.Repository
 {
-    public class StateRepository
+    public class StateRepository : IStateRepository
     {
         private readonly ApplicationDbContext _context;
         public StateRepository(ApplicationDbContext context)
@@ -55,7 +55,7 @@ namespace OnlineJobPortal.Repository
 
             if (updatedState != null)
             {
-                updatedState.StateID = state.StateID;
+                //updatedState.StateID = state.StateID;
                 updatedState.StateName = state.StateName;
                 updatedState.CountryID = state.CountryID;
 
