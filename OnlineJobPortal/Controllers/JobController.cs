@@ -14,15 +14,13 @@ namespace OnlineJobPortal.Controllers
         {
             _jobsRepository = jobsRepository;
         }
-
-        [HttpGet("")]
+        [HttpGet("GetAllJobs")]
         public async Task<IActionResult> GetAllJobs()
         {
             var result = await _jobsRepository.GetAllJobsAsync();
             return Ok(result);
         }
-
-        [HttpGet("{JobID}")]
+        [HttpGet("GetJobByID/{JobID}")]
         public async Task<IActionResult> GetJobById(int JobID)
         {
             var result = await _jobsRepository.GetJobByIdAsync(JobID);
@@ -32,8 +30,7 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok(result);
         }
-
-        [HttpPost("")]
+        [HttpPost("AddJob")]
         public async Task<IActionResult> AddJob([FromBody] Job job)
         {
             var id = await _jobsRepository.AddJobAsync(job);
@@ -43,20 +40,17 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok("Job Added");
         }
-
-        [HttpPut("/job/{JobID}")]
+        [HttpPut("UodateJob/{JobID}")]
         public async Task<IActionResult> UpdateJob([FromRoute] int JobID, [FromBody] Job job)
         {
             await _jobsRepository.UpdateJobByIDAsync(JobID, job);
             return Ok("Update Successful");
         }
-
-        [HttpDelete("deleteJob/{JobID}")]
+        [HttpDelete("DeleteJob/{JobID}")]
         public async Task<IActionResult> DeleteJob([FromRoute] int JobID)
         {
             await _jobsRepository.DeleteJobByIDAsync(JobID);
             return Ok("Record Deleted Successfully");
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Data;
 using OnlineJobPortal.Models;
 using System;
@@ -29,6 +30,8 @@ namespace OnlineJobPortal.Repository
                 Address = u.Address,
                 Contact = u.Contact,
                 CityID = u.CityID,
+                StateID = u.StateID,
+                CountryID = u.CountryID,
                 Education1 = u.Education1,
                 Education2 = u.Education2,
                 Education3 = u.Education3,
@@ -53,12 +56,23 @@ namespace OnlineJobPortal.Repository
                 Address = u.Address,
                 Contact = u.Contact,
                 CityID = u.CityID,
+                StateID = u.StateID,
+                CountryID = u.CountryID,
                 Education1 = u.Education1,
+                EducationResult1 = u.EducationResult1,
+                EducationPassoutYear1 = u.EducationPassoutYear1,
                 Education2 = u.Education2,
+                EducationResult2 = u.EducationResult2,
+                EducationPassoutYear2 = u.EducationPassoutYear2,
                 Education3 = u.Education3,
+                EducationResult3 = u.EducationResult3,
+                EducationPassoutYear3 = u.EducationPassoutYear3,
                 Workex1 = u.Workex1,
+                WorkexDesc1 = u.WorkexDesc1,
                 Workex2 = u.Workex2,
+                WorkexDesc2 = u.WorkexDesc2,
                 Workex3 = u.Workex3,
+                WorkexDesc3 = u.WorkexDesc3
             }).FirstOrDefault();
 
             return records;
@@ -78,44 +92,35 @@ namespace OnlineJobPortal.Repository
                 Contact = candidate.Contact,
                 CityID = candidate.CityID,
                 Education1 = candidate.Education1,
+                EducationResult1 = candidate.EducationResult1,
+                EducationPassoutYear1 = candidate.EducationPassoutYear1,
                 Education2 = candidate.Education2,
+                EducationResult2 = candidate.EducationResult2,
+                EducationPassoutYear2 = candidate.EducationPassoutYear2,
                 Education3 = candidate.Education3,
+                EducationResult3 = candidate.EducationResult3,
+                EducationPassoutYear3 = candidate.EducationPassoutYear3,
                 Workex1 = candidate.Workex1,
+                WorkexDesc1 = candidate.WorkexDesc1,
                 Workex2 = candidate.Workex2,
+                WorkexDesc2 = candidate.WorkexDesc2,
                 Workex3 = candidate.Workex3,
+                WorkexDesc3 = candidate.WorkexDesc3
             };
             _context.Candidates.Add(newCandidate);
             await _context.SaveChangesAsync();
 
             return newCandidate.CID;
         }
-
-        public async Task UpdateCandidateByIDAsync(int CID, Candidate candidate)
+        public async Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument Candidates)
         {
-            var updatedCandidate = await _context.Candidates.FindAsync(CID);
-
-            if (updatedCandidate != null)
+            var updateCandidate = await _context.Candidates.FindAsync(CID);
+            if (updateCandidate != null)
             {
-                updatedCandidate.CID = candidate.CID;
-                updatedCandidate.FirstName = candidate.FirstName;
-                updatedCandidate.LastName = candidate.LastName;
-                updatedCandidate.Email = candidate.Email;
-                updatedCandidate.Password = candidate.Password;
-                updatedCandidate.DOB = candidate.DOB;
-                updatedCandidate.Address = candidate.Address;
-                updatedCandidate.Contact = candidate.Contact;
-                updatedCandidate.CityID = candidate.CityID;
-                updatedCandidate.Education1 = candidate.Education1;
-                updatedCandidate.Education2 = candidate.Education2;
-                updatedCandidate.Education3 = candidate.Education3;
-                updatedCandidate.Workex1 = candidate.Workex1;
-                updatedCandidate.Workex2 = candidate.Workex2;
-                updatedCandidate.Workex3 = candidate.Workex3;
+                Candidates.ApplyTo(updateCandidate);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
         }
-
         public async Task DeleteCandidateByIDAsync(int CID)
         {
             var deletedCandidate = new Candidate()

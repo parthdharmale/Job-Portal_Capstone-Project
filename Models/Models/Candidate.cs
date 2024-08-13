@@ -53,5 +53,7 @@ namespace OnlineJobPortal.Models
         public State State { get; set; }
         [JsonIgnore]
         public Country Country { get; set; }
+        [JsonIgnore]
+        public List<Application> Applications { get; set; }
     }
 }

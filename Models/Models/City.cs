@@ -19,5 +19,11 @@ namespace OnlineJobPortal.Models
         // Navigation Property
         [JsonIgnore]
         public State State { get; set; }
+        [JsonIgnore]
+        public List<Candidate> Candidates { get; set; }
+        [JsonIgnore]
+        public List<Recruiter> Recruiters { get; set; }
+        [JsonIgnore]
+        public List<Application> Applications { get; set; }
     }
 }

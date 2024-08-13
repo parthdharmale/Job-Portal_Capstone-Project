@@ -16,14 +16,14 @@ namespace OnlineJobPortal.Controllers
             _stateRepository = stateRepository;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetAllStates")]
         public async Task<IActionResult> GetAllStates()
         {
             var result = await _stateRepository.GetAllStateAsync();
             return Ok(result);
         }
 
-        [HttpGet("{StateID}")]
+        [HttpGet("GetStatesByID/{StateID}")]
         public async Task<IActionResult> GetStateById(int StateID)
         {
             var result = await _stateRepository.GetStateByIdAsync(StateID);
@@ -34,7 +34,7 @@ namespace OnlineJobPortal.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost("AddState")]
         public async Task<IActionResult> AddState([FromBody] State state)
         {
             var id = await _stateRepository.AddStateAsync(state);
@@ -48,7 +48,7 @@ namespace OnlineJobPortal.Controllers
             return Ok("State Added");
         }
 
-        [HttpPut("/state/{StateID}")]
+        [HttpPut("UpdateState/{StateID}")]
         public async Task<IActionResult> UpdateState([FromRoute] int StateID, [FromBody] State state)
         {
             await _stateRepository.UpdateStateByIDAsync(StateID, state);

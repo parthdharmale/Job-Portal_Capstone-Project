@@ -16,14 +16,14 @@ namespace OnlineJobPortal.Controllers
             _cityRepository = cityRepository;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetAllCities")]
         public async Task<IActionResult> GetAllCities()
         {
             var result = await _cityRepository.GetAllCityAsync();
             return Ok(result);
         }
 
-        [HttpGet("{CityID}")]
+        [HttpGet("GetCityByID/{CityID}")]
         public async Task<IActionResult> GetCityById(int CityID)
         {
             var result = await _cityRepository.GetCityByIdAsync(CityID);
@@ -34,7 +34,7 @@ namespace OnlineJobPortal.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost("AddCity")]
         public async Task<IActionResult> AddCity([FromBody] City city)
         {
             var id = await _cityRepository.AddCityAsync(city);
@@ -48,14 +48,14 @@ namespace OnlineJobPortal.Controllers
             return Ok("City Added");
         }
 
-        [HttpPut("/city/{CityID}")]
+        [HttpPut("UpdateCity/{CityID}")]
         public async Task<IActionResult> UpdateCity([FromRoute] int CityID, [FromBody] City city)
         {
             await _cityRepository.UpdateCityByIDAsync(CityID, city);
             return Ok("Update Successful");
         }
 
-        [HttpDelete("deleteCity/{CityID}")]
+        [HttpDelete("DeleteCity/{CityID}")]
         public async Task<IActionResult> DeleteCity([FromRoute] int CityID)
         {
             await _cityRepository.DeleteCityByIDAsync(CityID);

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace OnlineJobPortal.Models
 {
@@ -25,6 +26,8 @@ namespace OnlineJobPortal.Models
         public DateTime JobPostDate { get; set; }
         [Required] public DateTime JobExpireDate { get; set; }
         public string ModeOfWork { get; set; }
+        [JsonIgnore]
+        public List<Application> Applications { get; set; }
 
     }
 }
