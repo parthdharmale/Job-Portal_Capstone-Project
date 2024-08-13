@@ -19,14 +19,14 @@ namespace OnlineJobPortal.Controllers
             _recruiterRepository = recruiterRepository;
         }
 
-        [HttpGet("")]
+        [HttpGet("GetAllRecruiters")]
         public async Task<IActionResult> GetAllRecruiters()
         {
             var result = await _recruiterRepository.GetAllRecruitersAsync();
             return Ok(result);
         }
 
-        [HttpGet("{RID}")]
+        [HttpGet("GetRecruiterByID/{RID}")]
         public async Task<IActionResult> GetRecruiterById(int RID)
         {
             var result = await _recruiterRepository.GetRecruiterByIdAsync(RID);
@@ -37,7 +37,7 @@ namespace OnlineJobPortal.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost("AddRecruiter")]
         public async Task<IActionResult> AddRecruiter([FromBody] Recruiter recruiter)
         {
             var id = await _recruiterRepository.AddRecruiterAsync(recruiter);
@@ -51,14 +51,14 @@ namespace OnlineJobPortal.Controllers
             return Ok("Recruiter Added");
         }
 
-        [HttpPut("/recruiter/{RID}")]
+        [HttpPut("UpdateRecruiter/{RID}")]
         public async Task<IActionResult> UpdateRecruiter([FromRoute] int RID, [FromBody] Recruiter recruiter)
         {
             await _recruiterRepository.UpdateRecruiterByIDAsync(RID, recruiter);
             return Ok("Update Successful");
         }
 
-        [HttpDelete("deleteRecruiter/{RID}")]
+        [HttpDelete("DeleteRecruiter/{RID}")]
         public async Task<IActionResult> DeleteRecruiter([FromRoute] int RID)
         {
             await _recruiterRepository.DeleteRecruiterByIDAsync(RID);

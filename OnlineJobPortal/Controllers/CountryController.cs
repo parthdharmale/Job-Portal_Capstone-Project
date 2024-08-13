@@ -15,15 +15,13 @@ namespace OnlineJobPortal.Controllers
         {
             _countryRepository = countryRepository;
         }
-
-        [HttpGet("")]
+        [HttpGet("GetAllCountries")]
         public async Task<IActionResult> GetAllCountries()
         {
             var result = await _countryRepository.GetAllCountryAsync();
             return Ok(result);
         }
-
-        [HttpGet("{CountryID}")]
+        [HttpGet("GetCountryByID/{CountryID}")]
         public async Task<IActionResult> GetCountryById(int CountryID)
         {
             var result = await _countryRepository.GetCountryByIdAsync(CountryID);
@@ -33,8 +31,7 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok(result);
         }
-
-        [HttpPost("")]
+        [HttpPost("AddCountry")]
         public async Task<IActionResult> AddCountry([FromBody] Country country)
         {
             var id = await _countryRepository.AddCountryAsync(country);
@@ -47,15 +44,13 @@ namespace OnlineJobPortal.Controllers
             //return CreatedAtAction(nameof(GetRecruiterById), new { id = id, controller = "Recruiter" }, id);
             return Ok("Country Added");
         }
-
-        [HttpPut("/country/{CountryID}")]
+        [HttpPut("UpdateCountry/{CountryID}")]
         public async Task<IActionResult> UpdateCountry([FromRoute] int CountryID, [FromBody] Country country)
         {
             await _countryRepository.UpdateCountryByIDAsync(CountryID, country);
             return Ok("Update Successful");
         }
-
-        [HttpDelete("deleteCountry/{CountryID}")]
+        [HttpDelete("DeleteCountry/{CountryID}")]
         public async Task<IActionResult> DeleteCountry([FromRoute] int CountryID)
         {
             await _countryRepository.DeleteCountryByIDAsync(CountryID);

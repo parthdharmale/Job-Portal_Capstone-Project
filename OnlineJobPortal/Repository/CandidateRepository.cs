@@ -29,6 +29,8 @@ namespace OnlineJobPortal.Repository
                 Address = u.Address,
                 Contact = u.Contact,
                 CityID = u.CityID,
+                StateID = u.StateID,
+                CountryID = u.CountryID,
                 Education1 = u.Education1,
                 Education2 = u.Education2,
                 Education3 = u.Education3,
@@ -53,12 +55,23 @@ namespace OnlineJobPortal.Repository
                 Address = u.Address,
                 Contact = u.Contact,
                 CityID = u.CityID,
+                StateID = u.StateID,
+                CountryID = u.CountryID,
                 Education1 = u.Education1,
+                EducationResult1 = u.EducationResult1,
+                EducationPassoutYear1 = u.EducationPassoutYear1,
                 Education2 = u.Education2,
+                EducationResult2 = u.EducationResult2,
+                EducationPassoutYear2 = u.EducationPassoutYear2,
                 Education3 = u.Education3,
+                EducationResult3 = u.EducationResult3,
+                EducationPassoutYear3 = u.EducationPassoutYear3,
                 Workex1 = u.Workex1,
+                WorkexDesc1 = u.WorkexDesc1,
                 Workex2 = u.Workex2,
+                WorkexDesc2 = u.WorkexDesc2,
                 Workex3 = u.Workex3,
+                WorkexDesc3 = u.WorkexDesc3
             }).FirstOrDefault();
 
             return records;
@@ -78,11 +91,20 @@ namespace OnlineJobPortal.Repository
                 Contact = candidate.Contact,
                 CityID = candidate.CityID,
                 Education1 = candidate.Education1,
+                EducationResult1 = candidate.EducationResult1,
+                EducationPassoutYear1 = candidate.EducationPassoutYear1,
                 Education2 = candidate.Education2,
+                EducationResult2 = candidate.EducationResult2,
+                EducationPassoutYear2 = candidate.EducationPassoutYear2,
                 Education3 = candidate.Education3,
+                EducationResult3 = candidate.EducationResult3,
+                EducationPassoutYear3 = candidate.EducationPassoutYear3,
                 Workex1 = candidate.Workex1,
+                WorkexDesc1 = candidate.WorkexDesc1,
                 Workex2 = candidate.Workex2,
+                WorkexDesc2 = candidate.WorkexDesc2,
                 Workex3 = candidate.Workex3,
+                WorkexDesc3 = candidate.WorkexDesc3
             };
             _context.Candidates.Add(newCandidate);
             await _context.SaveChangesAsync();
