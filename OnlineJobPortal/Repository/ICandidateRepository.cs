@@ -8,7 +8,7 @@ namespace OnlineJobPortal.Repository
         Task<List<Candidate>> GetAllCandidatesAsync();
         Task<Candidate> GetCandidateByIdAsync(int CID);
         Task<int> AddCandidateAsync(Candidate candidate);
-        Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument Candidates);
+        Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument candidates);
         Task DeleteCandidateByIDAsync(int CID);
     }
 }

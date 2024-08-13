@@ -40,7 +40,7 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok("Job Added");
         }
-        [HttpPut("UodateJob/{JobID}")]
+        [HttpPut("UpdateJob/{JobID}")]
         public async Task<IActionResult> UpdateJob([FromRoute] int JobID, [FromBody] Job job)
         {
             await _jobsRepository.UpdateJobByIDAsync(JobID, job);

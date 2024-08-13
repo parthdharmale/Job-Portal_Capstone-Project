@@ -52,7 +52,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("ApplicationID");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Applications", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.Candidate", b =>
@@ -151,7 +151,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("StateID");
 
-                    b.ToTable("Candidates");
+                    b.ToTable("Candidates", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.City", b =>
@@ -174,7 +174,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("StateID");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.Country", b =>
@@ -192,7 +192,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("CountryID");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.Job", b =>
@@ -239,7 +239,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("JobID");
 
-                    b.ToTable("Jobs");
+                    b.ToTable("Jobs", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.Recruiter", b =>
@@ -267,7 +267,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("RID");
 
-                    b.ToTable("Recruiters");
+                    b.ToTable("Recruiters", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.State", b =>
@@ -290,7 +290,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("CountryID");
 
-                    b.ToTable("States");
+                    b.ToTable("States", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Models.Candidate", b =>

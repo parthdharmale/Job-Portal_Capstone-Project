@@ -33,11 +33,20 @@ namespace OnlineJobPortal.Repository
                 StateID = u.StateID,
                 CountryID = u.CountryID,
                 Education1 = u.Education1,
+                EducationResult1 = u.EducationResult1,
+                EducationPassoutYear1 = u.EducationPassoutYear1,
                 Education2 = u.Education2,
+                EducationResult2 = u.EducationResult2,
+                EducationPassoutYear2 = u.EducationPassoutYear2,
                 Education3 = u.Education3,
+                EducationResult3 = u.EducationResult3,
+                EducationPassoutYear3 = u.EducationPassoutYear3,
                 Workex1 = u.Workex1,
+                WorkexDesc1 = u.WorkexDesc1,
                 Workex2 = u.Workex2,
+                WorkexDesc2 = u.WorkexDesc2,
                 Workex3 = u.Workex3,
+                WorkexDesc3 = u.WorkexDesc3
             }).ToListAsync();
 
             return records;
@@ -112,12 +121,12 @@ namespace OnlineJobPortal.Repository
 
             return newCandidate.CID;
         }
-        public async Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument Candidates)
+        public async Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument candidates)
         {
             var updateCandidate = await _context.Candidates.FindAsync(CID);
             if (updateCandidate != null)
             {
-                Candidates.ApplyTo(updateCandidate);
+                candidates.ApplyTo(updateCandidate);
                 await _context.SaveChangesAsync();
             }
         }

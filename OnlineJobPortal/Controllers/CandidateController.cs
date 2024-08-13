@@ -49,8 +49,8 @@ namespace OnlineJobPortal.Controllers
 
             return Ok("Candidate Added");
         }
-        [HttpPut("/UpdateCandidate/{CID}")]
-        public async Task<IActionResult> UpdateCandidate([FromRoute] int CID, [FromBody] JsonPatchDocument candidate)
+        [HttpPatch("UpdateCandidate/{CID}")]
+        public async Task<IActionResult> UpdateCandidate([FromBody] JsonPatchDocument candidate, [FromRoute] int CID)
         {
             await _candidateRepository.UpdateCandidateByIDAsync(CID, candidate);
             return Ok("Update SAuccesful");
