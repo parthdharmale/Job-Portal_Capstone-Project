@@ -12,6 +12,8 @@ namespace OnlineJobPortal.Repository
             _context = context;
         }
 
+        //public RecruiterRepository() { }
+
         public async Task<List<Recruiter>> GetAllRecruitersAsync()
         {
             var records = await _context.Recruiters.Select(u=> new Recruiter()

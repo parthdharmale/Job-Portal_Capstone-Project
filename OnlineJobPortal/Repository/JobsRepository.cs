@@ -11,6 +11,7 @@ namespace OnlineJobPortal.Repository
 
         public JobsRepository(ApplicationDbContext context)
         {
+
             _context = context;
         }
 

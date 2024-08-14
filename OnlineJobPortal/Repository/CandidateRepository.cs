@@ -100,6 +100,8 @@ namespace OnlineJobPortal.Repository
                 Address = candidate.Address,
                 Contact = candidate.Contact,
                 CityID = candidate.CityID,
+                StateID = candidate.StateID,
+                CountryID  = candidate.CountryID,
                 Education1 = candidate.Education1,
                 EducationResult1 = candidate.EducationResult1,
                 EducationPassoutYear1 = candidate.EducationPassoutYear1,
