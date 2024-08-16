@@ -30,6 +30,16 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetJobByRecruiterID/{rID}")]
+        public async Task<IActionResult> GetJobByRecruiterId(int rID)
+        {
+            var result = await _jobsRepository.GetJobByRecruiterIdAsync(rID);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
         [HttpPost("AddJob")]
         public async Task<IActionResult> AddJob([FromBody] Job job)
         {

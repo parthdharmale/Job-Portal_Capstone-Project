@@ -33,6 +33,26 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetApplicationByCandidateId/{canID}")]
+        public async Task<IActionResult> GetApplicationByCandidateId(int canID)
+        {
+            var result = await _applicationRepository.GetApplicationByCandidateIdAsync(canID);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+        [HttpGet("GetApplicationByJobId/{jobID}")]
+        public async Task<IActionResult> GetApplicationByJobId(int jobID)
+        {
+            var result = await _applicationRepository.GetApplicationByJobIdAsync(jobID);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
 
         [HttpPost("AddApplication")]
         public async Task<IActionResult> AddApplication([FromBody] Application application)
