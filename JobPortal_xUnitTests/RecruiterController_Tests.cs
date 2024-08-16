@@ -10,6 +10,7 @@ using OnlineJobPortal.Repository;
 using Moq;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 using Microsoft.AspNetCore.Mvc;
+
 namespace JobPortal_xUnitTests
 {
     public class RecruiterController_Tests

@@ -13,6 +13,7 @@ namespace OnlineJobPortal
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("JobPortalCS")));
+            builder.Services.AddCors(options => options.AddPolicy("CorsEmpPolicy", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddTransient<IRecruiterRepository, RecruiterRepository>();
             builder.Services.AddTransient<IJobsRepository,JobsRepository>();
@@ -38,6 +39,9 @@ namespace OnlineJobPortal
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CorsEmpPolicy");
+
 
             app.UseAuthorization();
 
