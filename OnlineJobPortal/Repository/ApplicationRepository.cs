@@ -43,6 +43,34 @@ namespace OnlineJobPortal.Repository
             }).FirstOrDefault();
             return records;
         }
+        public async Task<Application> GetApplicationByCandidateIdAsync(int canID)
+        {
+            var records = _context.Applications.Where(u => u.CID == canID).Select(u => new Application()
+            {
+                ApplicationID = u.ApplicationID,
+                JobID = u.JobID,
+                CID = u.CID,
+                Resume = u.Resume,
+                Skills = u.Skills,
+                Status = u.Status,
+                DateOfApplication = u.DateOfApplication,
+            }).FirstOrDefault();
+            return records;
+        }
+        public async Task<Application> GetApplicationByJobIdAsync(int jobID)
+        {
+            var records = _context.Applications.Where(u => u.JobID == jobID ).Select(u => new Application()
+            {
+                ApplicationID = u.ApplicationID,
+                JobID = u.JobID,
+                CID = u.CID,
+                Resume = u.Resume,
+                Skills = u.Skills,
+                Status = u.Status,
+                DateOfApplication = u.DateOfApplication,
+            }).FirstOrDefault();
+            return records;
+        }
 
         public async Task<int> AddApplicationAsync(Application application)
         {

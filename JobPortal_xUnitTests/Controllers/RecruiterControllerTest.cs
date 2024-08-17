@@ -10,15 +10,14 @@ using OnlineJobPortal.Repository;
 using Moq;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 using Microsoft.AspNetCore.Mvc;
-
-namespace JobPortal_xUnitTests
+namespace JobPortal_xUnitTests.Controllers
 {
-    public class RecruiterController_Tests
+    public class RecruiterControllerTest
     {
         private readonly RecruiterController _recruiterController;
         private readonly Mock<IRecruiterRepository> _recruiterRepositoryMock;
 
-        public RecruiterController_Tests()
+        public RecruiterControllerTest()
         {
             _recruiterRepositoryMock = new Mock<IRecruiterRepository>();
             _recruiterController = new RecruiterController(_recruiterRepositoryMock.Object);
@@ -45,7 +44,7 @@ namespace JobPortal_xUnitTests
         public async Task AddRecruiter_Results_OkObject()
         {
             // Arrange
-            var recruiter = new Recruiter { RID = 2, Name = "JP Morgan Chase & Co.", CityID=6, Email="jpmc@usa.com", Contact = "1234567890" };
+            var recruiter = new Recruiter { RID = 2, Name = "JP Morgan Chase & Co.", CityID = 6, Email = "jpmc@usa.com", Contact = "1234567890" };
 
             //Setup
             _recruiterRepositoryMock.Setup(service => service.AddRecruiterAsync(recruiter)).ReturnsAsync(recruiter.RID);
@@ -62,7 +61,7 @@ namespace JobPortal_xUnitTests
         public async Task UpdateRecruiter_Returns_OkObject()
         {
             //Arrange
-            var updatedRecruiter = new Recruiter{ RID = 2, Name = "Morningstar",CityID=7, Email="abc@gmail.com", Contact="0987654321" };
+            var updatedRecruiter = new Recruiter { RID = 2, Name = "Morningstar", CityID = 7, Email = "abc@gmail.com", Contact = "0987654321" };
             var RID = updatedRecruiter.RID;
 
             // Setup
