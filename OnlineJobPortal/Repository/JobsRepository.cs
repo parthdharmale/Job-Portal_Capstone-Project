@@ -52,6 +52,24 @@ namespace OnlineJobPortal.Repository
             }).FirstOrDefault();
             return records;
         }
+        public async Task<Job> GetJobByRecruiterIdAsync(int rID)
+        {
+            var records = _context.Jobs.Where(u => u.RID == rID).Select(u => new Job()
+            {
+                JobID = u.JobID,
+                RID = u.RID,
+                Description = u.Description,
+                Location = u.Location,
+                Skills = u.Skills,
+                RecruiterContact = u.RecruiterContact,
+                RecruiterEmail = u.RecruiterEmail,
+                RecruiterName = u.RecruiterName,
+                JobPostDate = u.JobPostDate,
+                JobExpireDate = u.JobExpireDate,
+                ModeOfWork = u.ModeOfWork
+            }).FirstOrDefault();
+            return records;
+        }
 
         public async Task<int> AddJobAsync(Job job)
         {
