@@ -10,5 +10,7 @@ namespace OnlineJobPortal.Repository
         Task<int> AddCandidateAsync(Candidate candidate);
         Task UpdateCandidateByIDAsync(int CID, JsonPatchDocument candidates);
         Task DeleteCandidateByIDAsync(int CID);
+
+        Task<int> CheckCandidateCredentialsAsync(string email, string password);
     }
 }

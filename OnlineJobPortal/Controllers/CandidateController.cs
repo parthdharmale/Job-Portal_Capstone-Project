@@ -61,5 +61,25 @@ namespace OnlineJobPortal.Controllers
             await _candidateRepository.DeleteCandidateByIDAsync(CID);
             return Ok("Record Deleted Succesfully");
         }
+
+        [HttpPost("CheckCandidateCredentials")]
+        public async Task<IActionResult> CheckCandidateCredentials([FromBody] CredentialsDto credentials)
+        {
+            if (credentials == null)
+            {
+                return BadRequest("Invalid credentials");
+            }
+
+            int candidateID = await _candidateRepository.CheckCandidateCredentialsAsync(credentials.Email, credentials.Password);
+
+            if (candidateID > 0)
+            {
+                return Ok(new { Message = "Credentials are correct", CandidateId = candidateID });
+            }
+            else
+            {
+                return Unauthorized(new { Message = "Invalid credentials" });
+            }
+        }
     }
 }

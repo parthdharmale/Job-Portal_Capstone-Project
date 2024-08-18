@@ -52,9 +52,9 @@ namespace OnlineJobPortal.Repository
             }).FirstOrDefault();
             return records;
         }
-        public async Task<Job> GetJobByRecruiterIdAsync(int rID)
+        public async Task<List<Job>> GetJobByRecruiterIdAsync(int rID)
         {
-            var records = _context.Jobs.Where(u => u.RID == rID).Select(u => new Job()
+            var records = await  _context.Jobs.Where(u => u.RID == rID).Select(u => new Job()
             {
                 JobID = u.JobID,
                 RID = u.RID,
@@ -67,7 +67,7 @@ namespace OnlineJobPortal.Repository
                 JobPostDate = u.JobPostDate,
                 JobExpireDate = u.JobExpireDate,
                 ModeOfWork = u.ModeOfWork
-            }).FirstOrDefault();
+            }).ToListAsync();
             return records;
         }
 

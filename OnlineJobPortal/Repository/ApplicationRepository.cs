@@ -43,9 +43,9 @@ namespace OnlineJobPortal.Repository
             }).FirstOrDefault();
             return records;
         }
-        public async Task<Application> GetApplicationByCandidateIdAsync(int canID)
+        public async Task<List<Application>> GetApplicationByCandidateIdAsync(int canID)
         {
-            var records = _context.Applications.Where(u => u.CID == canID).Select(u => new Application()
+            var records = await _context.Applications.Where(u => u.CID == canID).Select(u => new Application()
             {
                 ApplicationID = u.ApplicationID,
                 JobID = u.JobID,
@@ -54,12 +54,12 @@ namespace OnlineJobPortal.Repository
                 Skills = u.Skills,
                 Status = u.Status,
                 DateOfApplication = u.DateOfApplication,
-            }).FirstOrDefault();
+            }).ToListAsync();
             return records;
         }
-        public async Task<Application> GetApplicationByJobIdAsync(int jobID)
+        public async Task<List<Application>> GetApplicationByJobIdAsync(int jobID)
         {
-            var records = _context.Applications.Where(u => u.JobID == jobID ).Select(u => new Application()
+            var records = await _context.Applications.Where(u => u.JobID == jobID ).Select(u => new Application()
             {
                 ApplicationID = u.ApplicationID,
                 JobID = u.JobID,
@@ -68,7 +68,7 @@ namespace OnlineJobPortal.Repository
                 Skills = u.Skills,
                 Status = u.Status,
                 DateOfApplication = u.DateOfApplication,
-            }).FirstOrDefault();
+            }).ToListAsync();
             return records;
         }
 

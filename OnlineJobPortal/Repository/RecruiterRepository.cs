@@ -27,6 +27,25 @@ namespace OnlineJobPortal.Repository
             return records;
         }
 
+        public async Task<string> CheckEmailExistsAsync(string email)
+        {
+            // Validate input parameter
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentException("Email must be provided.");
+            }
+
+            // Query the database to find the recruiter with the provided email and return the name if found
+            var recruiterName = await _context.Recruiters
+                                               .Where(r => r.Email == email)
+                                               .Select(r => r.Name) // Assuming 'Name' is the property for the recruiter's name
+                                               .FirstOrDefaultAsync();
+
+            return recruiterName; // Will return null if no recruiter is found
+        }
+
+
+
         public async Task<Recruiter> GetRecruiterByIdAsync(int RID)
         {
             var records = _context.Recruiters.Where(u => u.RID == RID).Select(u => new Recruiter()

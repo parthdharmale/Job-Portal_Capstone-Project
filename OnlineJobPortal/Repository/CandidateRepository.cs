@@ -142,5 +142,19 @@ namespace OnlineJobPortal.Repository
             _context.Candidates.Remove(deletedCandidate);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> CheckCandidateCredentialsAsync(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("Email and password must be provided.");
+            }
+
+            var candidate = await _context.Candidates
+                                           .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+
+            return candidate?.CID ?? 0;
+        }
+
     }
 }

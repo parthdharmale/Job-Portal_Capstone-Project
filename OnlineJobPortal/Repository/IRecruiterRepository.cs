@@ -13,6 +13,6 @@ namespace OnlineJobPortal.Repository
 
         Task DeleteRecruiterByIDAsync(int RID);
 
-
+        Task<string> CheckEmailExistsAsync(string email);
     }
 }
