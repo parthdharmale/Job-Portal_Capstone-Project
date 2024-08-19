@@ -88,11 +88,10 @@ namespace OnlineJobPortal.Repository
             };
             _context.Jobs.Add(newjob);
             await _context.SaveChangesAsync();
-
             return newjob.RID;
         }
 
-        public async Task UpdateJobByIDAsync(int JobID, Job job)
+        public async Task<string> UpdateJobByIDAsync(int JobID, Job job)
         {
             var updatedJob = await _context.Jobs.FindAsync(JobID);
             if(updatedJob != null)
@@ -107,8 +106,8 @@ namespace OnlineJobPortal.Repository
                 updatedJob.JobExpireDate = job.JobExpireDate;
                 updatedJob.ModeOfWork = job.ModeOfWork;
             }
-
             await _context.SaveChangesAsync();
+            return "Updated";
         }
 
         public async Task DeleteJobByIDAsync(int JobID)
@@ -119,6 +118,25 @@ namespace OnlineJobPortal.Repository
             };
             _context.Jobs.Remove(deletedJob);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Job> GetJobByNameAsync(string jobName)
+        {
+            var records = _context.Jobs.Where(u => u.Description == jobName).Select(u => new Job()
+            {
+                JobID = u.JobID,
+                RID = u.RID,
+                Description = u.Description,
+                Location = u.Location,
+                Skills = u.Skills,
+                RecruiterContact = u.RecruiterContact,
+                RecruiterEmail = u.RecruiterEmail,
+                RecruiterName = u.RecruiterName,
+                JobPostDate = u.JobPostDate,
+                JobExpireDate = u.JobExpireDate,
+                ModeOfWork = u.ModeOfWork
+            }).FirstOrDefault();
+            return records;
         }
     }
 }
