@@ -10,6 +10,6 @@ namespace OnlineJobPortal.Repository
         Task<int> AddJobAsync(Job job);
         Task<string> UpdateJobByIDAsync(int JobID, Job job);
         Task DeleteJobByIDAsync(int JobID);
-        Task<Job> GetJobByRecruiterIdAsync(int rID);
+        Task<List<Job>> GetJobByRecruiterIdAsync(int rID);
     }
 }

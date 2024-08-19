@@ -11,14 +11,20 @@ namespace OnlineJobPortal.Models
         public int ApplicationID { get; set; }
         [ForeignKey("Job")]
         public int JobID { get; set; }
+
         [ForeignKey("Candidate")] 
         public int CID { get; set; }
+
         [Required] 
         public string Resume {  get; set; }
+
         [Required] 
         public string Skills { get; set; }
+
         public string Status { get; set; }
+
         public DateTime DateOfApplication { get; set; }
+
         //Navigation
         [NotMapped]
         [JsonIgnore]

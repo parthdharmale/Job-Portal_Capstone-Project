@@ -19,6 +19,26 @@ namespace OnlineJobPortal.Controllers
             _recruiterRepository = recruiterRepository;
         }
 
+        [HttpGet("CheckEmail/{email}")]
+        public async Task<IActionResult> CheckEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return BadRequest("Email must be provided.");
+            }
+
+            var recruiterName = await _recruiterRepository.CheckEmailExistsAsync(email);
+
+            if (recruiterName != null)
+            {
+                return Ok(new { exists = true, name = recruiterName });
+            }
+            else
+            {
+                return Ok(new { exists = false, name = (string)null });
+            }
+        }
+
         [HttpGet("GetAllRecruiters")]
         public async Task<IActionResult> GetAllRecruiters()
         {
