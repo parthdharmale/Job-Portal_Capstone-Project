@@ -11,10 +11,11 @@ namespace OnlineJobPortal.Controllers
     public class CandidateController : ControllerBase
     {
         private readonly ICandidateRepository _candidateRepository;
-
-        public CandidateController(ICandidateRepository candidateRepository)
+        private readonly ILogger<CandidateController> _logger;
+        public CandidateController(ICandidateRepository candidateRepository, ILogger<CandidateController> logger)
         {
             _candidateRepository = candidateRepository;
+            _logger = logger;
         }
 
         [HttpGet("GetAllCandidates")]
@@ -31,6 +32,7 @@ namespace OnlineJobPortal.Controllers
 
             if(result == null)
             {
+                _logger.LogTrace("Result Not Found");
                 return NotFound();
             }
 

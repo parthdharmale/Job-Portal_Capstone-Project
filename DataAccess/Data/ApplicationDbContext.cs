@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JobPortalModels.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OnlineJobPortal.Models;
 namespace OnlineJobPortal.Data
@@ -20,6 +21,8 @@ namespace OnlineJobPortal.Data
         public DbSet<Job> Jobs { get; set; }
 
         public DbSet<Recruiter> Recruiters { get; set; }
+
+        public DbSet<Admin> Admins { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

@@ -21,6 +21,7 @@ namespace OnlineJobPortal.Repository
             {
                 JobID = u.JobID,
                 RID = u.RID,
+                CityID = u.CityID,
                 Description = u.Description,
                 Location = u.Location,
                 Skills = u.Skills,
@@ -40,6 +41,8 @@ namespace OnlineJobPortal.Repository
             {
                 JobID = u.JobID,
                 RID = u.RID,
+                CityID = u.CityID,
+
                 Description = u.Description,
                 Location = u.Location,
                 Skills = u.Skills,
@@ -58,6 +61,8 @@ namespace OnlineJobPortal.Repository
             {
                 JobID = u.JobID,
                 RID = u.RID,
+                CityID = u.CityID,
+
                 Description = u.Description,
                 Location = u.Location,
                 Skills = u.Skills,
@@ -76,6 +81,8 @@ namespace OnlineJobPortal.Repository
             var newjob = new Job()
             {
                 RID = job.RID,
+                CityID = job.CityID,
+
                 Description = job.Description,
                 Location = job.Location,
                 Skills = job.Skills,
@@ -99,6 +106,7 @@ namespace OnlineJobPortal.Repository
             {
                 updatedJob.Description = job.Description;
                 updatedJob.Location = job.Location;
+                updatedJob.CityID = job.CityID;
                 updatedJob.Skills = job.Skills;
                 updatedJob.RecruiterContact = job.RecruiterContact;
                 updatedJob.RecruiterEmail = job.RecruiterEmail;
