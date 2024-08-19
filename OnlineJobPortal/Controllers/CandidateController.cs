@@ -44,7 +44,7 @@ namespace OnlineJobPortal.Controllers
         {
             var id = await _candidateRepository.AddCandidateAsync(candidate);
 
-            if(id == -1)
+            if(id <= 0)
             {
                 return BadRequest();
             }

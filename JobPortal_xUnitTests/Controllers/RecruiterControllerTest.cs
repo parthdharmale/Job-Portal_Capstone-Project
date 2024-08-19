@@ -85,7 +85,7 @@ namespace JobPortal_xUnitTests.Controllers
 
             var result = await _recruiterController.DeleteRecruiter(RID) as OkObjectResult;
 
-            Assert.Null(result);
+            Assert.NotNull(result);
             Assert.Equal(200, result.StatusCode);
         }
 
@@ -103,6 +103,5 @@ namespace JobPortal_xUnitTests.Controllers
             Assert.NotNull(result);
             Assert.Equal(200, result.StatusCode);
         }
-
     }
 }

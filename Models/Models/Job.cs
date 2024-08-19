@@ -7,9 +7,7 @@ namespace OnlineJobPortal.Models
     public class Job
     {
         [Key] public int JobID { get; set; }
-
         //public Recruiter Recruiter { get; set; }
-
         //[ForeignKey("Recruiter")]
         public int RID { get; set; }
         public int CityID { get; set; }
@@ -17,10 +15,8 @@ namespace OnlineJobPortal.Models
         public string Description { get; set; }
         [Required] public string Skills { get; set; }
         public string RecruiterName { get; set; }
-
         [Phone]
         public string RecruiterContact { get; set; }
-
         [EmailAddress]
         public string RecruiterEmail { get; set; }
         public DateTime JobPostDate { get; set; }
@@ -28,6 +24,5 @@ namespace OnlineJobPortal.Models
         public string ModeOfWork { get; set; }
         [JsonIgnore]
         public List<Application> Applications { get; set; }
-
     }
 }
