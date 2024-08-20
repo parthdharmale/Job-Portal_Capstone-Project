@@ -30,6 +30,16 @@ namespace OnlineJobPortal.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetJobByName/{jobName}")]
+        public async Task<IActionResult> GetJobByName(string jobName)
+        {
+            var result = await _jobsRepository.GetJobByNameAsync(jobName);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
         [HttpGet("GetJobByRecruiterID/{rID}")]
         public async Task<IActionResult> GetJobByRecruiterId(int rID)
         {
@@ -44,7 +54,7 @@ namespace OnlineJobPortal.Controllers
         public async Task<IActionResult> AddJob([FromBody] Job job)
         {
             var id = await _jobsRepository.AddJobAsync(job);
-            if(id == -1)
+            if(id <= 0)
             {
                 return BadRequest();
             }
