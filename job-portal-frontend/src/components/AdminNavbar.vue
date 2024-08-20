@@ -9,6 +9,7 @@
       <li><router-link to="/get-all-recruiters">Show Recruiters</router-link></li>
       <li><router-link to="/delete-recruiter">Delete Recruiter</router-link></li>
       <li><router-link to="/delete-candidate">Delete Candidate</router-link></li>
+      <li><router-link to="/get-admin">Get Admin</router-link></li>
       
 
       

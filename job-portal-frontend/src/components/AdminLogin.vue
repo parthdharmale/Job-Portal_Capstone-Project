@@ -38,7 +38,9 @@ export default {
         if (response.status === 200) {
           adminId.value = response.data.adminId;
 
-          console.log(response.data.adminId);
+          // console.log(response.data.token);
+          localStorage.setItem('authToken', response.data.token);
+          // console.log(response);
           emit('login-success',adminId.value);
           
           message.value = 'Login successful';

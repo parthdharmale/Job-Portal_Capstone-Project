@@ -12,7 +12,11 @@
       </div>
       <button type="submit" class="submit-button">Check Credentials</button> 
     </form>
-    <p v-if="message" :class="{'error': !isValid, 'success': isValid}">{{ message }}</p>
+    <p v-if="message" :class="{'error': !isValid, 'success': isValid}">
+      Invalid Email or Password
+      
+    </p>
+    <CandidateSignupVue v-if="message && !isValid" />
   </div>
 </template>
 
@@ -20,8 +24,12 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
+import CandidateSignupVue from './CandidateSignup.vue';
 export default {
   name: 'CandidateLogin',
+  components:{
+    CandidateSignupVue,
+  },
   setup(props, { emit }) {
     const credentials = ref({
       email: '',
@@ -30,6 +38,7 @@ export default {
     const message = ref('');
     const isValid = ref(false);
     const candidateId = ref(0);
+    
 
     const checkCredentials = async () => {
       try {
@@ -37,7 +46,7 @@ export default {
 
         if (response.status === 200) {
           candidateId.value = response.data.candidateId;
-
+          // console.log(response);
           console.log(response.data.candidateId);
           emit('login-success',candidateId.value);
           
@@ -46,8 +55,14 @@ export default {
         } else {
           message.value = 'Invalid credentials';
           isValid.value = false;
+          
+          // console.log("tried" + this.tried);
+          // console.log("isvalid" + isValid.value);
         }
       } catch (error) {
+        // this.tried = true;
+        // console.log("tried" + this.tried);
+          // console.log("isvalid" + isValid.value);
         if (error.response) {
           // Server responded with a status other than 2xx
           message.value = error.response.data;
@@ -63,8 +78,14 @@ export default {
       credentials,
       message,
       isValid,
-      checkCredentials
+      checkCredentials,
+      
     };
+  },
+  data(){
+    return{
+      // tried : false,
+    }
   }
 };
 </script>

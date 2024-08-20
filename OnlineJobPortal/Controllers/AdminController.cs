@@ -34,6 +34,8 @@ namespace OnlineJobPortal.Controllers
         }
 
         // GET: api/Admin/{id}
+        [Authorize]
+
         [HttpGet("GetAdminByID/{id}")]
         public async Task<ActionResult<Admin>> GetAdminById(int id)
         {
@@ -50,6 +52,8 @@ namespace OnlineJobPortal.Controllers
 
         // POST: api/Admin
         [HttpPost("AddAdmin")]
+        [Authorize]
+
         public async Task<ActionResult<int>> AddAdmin(Admin admin)
         {
             var newAdminId = await _adminRepository.AddAdminAsync(admin);

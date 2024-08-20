@@ -10,6 +10,7 @@ import ShowCandidates from '@/components/ShowCandidates.vue';
 import ShowRecruiters from '@/components/ShowRecruiters.vue';
 import DeleteRecruiter from '@/components/DeleteRecruiter.vue';
 import DeleteCandidate from '@/components/DeleteCandidate.vue';
+import GetAdmin from '@/components/GetAdmin.vue';
 // import HomePage from '@/components/UserSelection.vue';
 const routes = [
   // { path: '/', component: HomePage },
@@ -23,6 +24,7 @@ const routes = [
   { path: '/get-all-recruiters', component: ShowRecruiters },
   { path: '/delete-recruiter', component: DeleteRecruiter },
   { path: '/delete-candidate', component: DeleteCandidate },
+  { path: '/get-admin', component: GetAdmin },
 
 ];
 

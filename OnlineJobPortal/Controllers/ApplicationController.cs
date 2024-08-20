@@ -10,10 +10,13 @@ namespace OnlineJobPortal.Controllers
     public class ApplicationController : ControllerBase
     {
         private readonly IApplicationRepository _applicationRepository;
+        private readonly ILogger<ApplicationController> _logger;
 
-        public ApplicationController(IApplicationRepository applicationRepository)
+        public ApplicationController(IApplicationRepository applicationRepository, ILogger<ApplicationController> logger)
         {
             _applicationRepository = applicationRepository;
+            _logger = logger;
+
         }
 
         [HttpGet("GetAllApplications")]
@@ -29,6 +32,8 @@ namespace OnlineJobPortal.Controllers
             var result = await _applicationRepository.GetApplicationByIdAsync(ApplicationID);
             if (result == null)
             {
+                _logger.LogTrace("Application ID is not valid");
+
                 return NotFound();
             }
             return Ok(result);
@@ -39,6 +44,8 @@ namespace OnlineJobPortal.Controllers
             var result = await _applicationRepository.GetApplicationByCandidateIdAsync(canID);
             if (result == null)
             {
+                _logger.LogTrace("Application Not Found");
+
                 return NotFound();
             }
             return Ok(result);
@@ -61,6 +68,8 @@ namespace OnlineJobPortal.Controllers
 
             if (id == -1)
             {
+                _logger.LogTrace("Application Not Valid");
+
                 return BadRequest();
             }
 

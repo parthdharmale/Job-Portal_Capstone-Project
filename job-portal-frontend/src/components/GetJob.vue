@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Fetch Job Details</h1>
-    <button @click="getJobs" class="submit-button">Click Here To See Open Jobs</button>
+    <button v-if="!isClicked" @click="getJobs" class="submit-button">Click Here To See Open Jobs</button>
     <table v-if="jobs.length">
       <thead>
         <tr>
@@ -53,11 +53,13 @@ export default {
   data() {
     return {
       jobs: [],
-      cities: []
+      cities: [],
+      isClicked: false,
     };
   },
   methods: {
     getJobs() {
+      this.isClicked = true;
       axios.get("https://localhost:7077/api/Job/GetAllJobs")
         .then(response => {
           console.log(response.data);
@@ -67,7 +69,7 @@ export default {
           console.log(error);
         });
 
-        this.getCities();
+        // this.getCities();
     },
     getCities() {
       axios.get("https://localhost:7077/api/City/GetAllCities")

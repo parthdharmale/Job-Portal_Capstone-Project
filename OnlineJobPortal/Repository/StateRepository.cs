@@ -16,7 +16,7 @@ namespace OnlineJobPortal.Repository
         {
             var records = await _context.States.Select(u => new State()
             {
-                StateID = u.CountryID,
+                StateID = u.StateID,
                 StateName = u.StateName,
                 CountryID = u.CountryID
             }).ToListAsync();

@@ -32,7 +32,7 @@ namespace OnlineJobPortal.Controllers
 
             if(result == null)
             {
-                _logger.LogTrace("Result Not Found");
+                _logger.LogTrace("Candidate ID Not Valid");
                 return NotFound();
             }
 
@@ -46,6 +46,7 @@ namespace OnlineJobPortal.Controllers
 
             if(id == -1)
             {
+                _logger.LogTrace("Candidate Not Added");
                 return BadRequest();
             }
 
@@ -55,12 +56,14 @@ namespace OnlineJobPortal.Controllers
         public async Task<IActionResult> UpdateCandidate([FromBody] JsonPatchDocument candidate, [FromRoute] int CID)
         {
             await _candidateRepository.UpdateCandidateByIDAsync(CID, candidate);
+            _logger.LogTrace("Candidate Updated Succesfully");
             return Ok("Update SAuccesful");
         }
         [HttpDelete("DeleteCandidate/{CID}")]
         public async Task<IActionResult> DeleteCandidate([FromRoute] int CID)
         {
             await _candidateRepository.DeleteCandidateByIDAsync(CID);
+            _logger.LogTrace($"Candidate with ID : {CID} Deleted");
             return Ok("Record Deleted Succesfully");
         }
 
