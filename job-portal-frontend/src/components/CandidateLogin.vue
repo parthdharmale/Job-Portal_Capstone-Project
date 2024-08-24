@@ -16,7 +16,10 @@
       Invalid Email or Password
       
     </p>
-    <CandidateSignupVue v-if="message && !isValid" />
+    <button @click="buttonClicked" class="submit-button">
+      Or else Signup
+    </button>
+    <CandidateSignupVue v-if="(message && !isValid) || isClicked" />
   </div>
 </template>
 
@@ -42,11 +45,13 @@ export default {
 
     const checkCredentials = async () => {
       try {
+        localStorage.removeItem("adminLogged");
         const response = await axios.post('https://localhost:7077/api/Candidate/CheckCandidateCredentials', credentials.value);
 
         if (response.status === 200) {
           candidateId.value = response.data.candidateId;
           // console.log(response);
+          localStorage.setItem("CID", candidateId.value);
           console.log(response.data.candidateId);
           emit('login-success',candidateId.value);
           
@@ -85,6 +90,12 @@ export default {
   data(){
     return{
       // tried : false,
+      isClicked: false,
+    }
+  },
+  methods:{
+    buttonClicked(){
+      this.isClicked = true;
     }
   }
 };

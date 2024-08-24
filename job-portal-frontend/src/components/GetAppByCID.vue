@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       candidateId: this.candidateID,
+      // candidateId: localStorage.getItem("CID"),
       applications: [],
       errorMessage: ''
     };

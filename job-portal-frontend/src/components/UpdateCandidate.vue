@@ -52,6 +52,8 @@
       <div>
         <button type="submit" class="submit-button">Update</button>
       </div>
+
+      
     </form>
     <div v-if="message" class="alert alert-info">{{ message }}</div>
   </div>
@@ -89,6 +91,7 @@ export default {
   methods: {
     async fetchCandidate() {
       try {
+        
         const response = await axios.get(`https://localhost:7077/api/Candidate/GetCandidateByID/${this.cid}`);
         this.candidate = response.data;
       } catch (error) {

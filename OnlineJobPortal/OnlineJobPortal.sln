@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortalModels", "..\Model
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{1B861F28-1085-45CE-A7CB-612F51D52642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal_xUnitTests", "..\JobPortal_xUnitTests\JobPortal_xUnitTests.csproj", "{64EC24D2-399F-4205-8342-D708C01324ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal_xUnitTests", "..\JobPortal_xUnitTests\JobPortal_xUnitTests.csproj", "{64EC24D2-399F-4205-8342-D708C01324ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineJobPortalMVC", "..\OnlineJobPortalMVC\OnlineJobPortalMVC.csproj", "{3DA16037-E167-4794-887D-D3BE0B992AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{64EC24D2-399F-4205-8342-D708C01324ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64EC24D2-399F-4205-8342-D708C01324ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64EC24D2-399F-4205-8342-D708C01324ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DA16037-E167-4794-887D-D3BE0B992AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DA16037-E167-4794-887D-D3BE0B992AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DA16037-E167-4794-887D-D3BE0B992AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DA16037-E167-4794-887D-D3BE0B992AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

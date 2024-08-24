@@ -30,6 +30,7 @@ namespace OnlineJobPortal.Repository
             {
                 StateID = u.StateID,
                 StateName = u.StateName,
+                CountryID = u.CountryID
             }).FirstOrDefault();
 
             return records;

@@ -11,6 +11,9 @@ import ShowRecruiters from '@/components/ShowRecruiters.vue';
 import DeleteRecruiter from '@/components/DeleteRecruiter.vue';
 import DeleteCandidate from '@/components/DeleteCandidate.vue';
 import GetAdmin from '@/components/GetAdmin.vue';
+import GetAppByCID from '@/components/GetAppByCID.vue';
+import UpdateCandidate from '@/components/UpdateCandidate.vue';
+import AddEducationDetails from '@/components/AddEducationDetails.vue';
 // import HomePage from '@/components/UserSelection.vue';
 const routes = [
   // { path: '/', component: HomePage },
@@ -25,6 +28,10 @@ const routes = [
   { path: '/delete-recruiter', component: DeleteRecruiter },
   { path: '/delete-candidate', component: DeleteCandidate },
   { path: '/get-admin', component: GetAdmin },
+  { path: '/get-app-by-cid', component: GetAppByCID },
+  { path: '/update-profile', component: UpdateCandidate },
+  { path: '/update-education', component: AddEducationDetails },
+
 
 ];
 

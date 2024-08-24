@@ -15,7 +15,7 @@
           <th>Recruiter Contact</th>
           <th>Recruiter Email</th>
           <th>Mode of Work</th>
-          <th>Actions</th> <!-- New column for actions -->
+          <th v-if="isLogged!='yes' ">Actions</th> 
         </tr>
       </thead>
       <tbody>
@@ -31,8 +31,8 @@
           <td>{{ job.recruiterContact }}</td>
           <td>{{ job.recruiterEmail }}</td>
           <td>{{ job.modeOfWork }}</td>
-          <td>
-            <button @click="applyForJob(job.jobID)">Apply</button>
+          <td v-if="isLogged!='yes' ">
+            <button  @click="applyForJob(job.jobID)">Apply</button>
           </td>
         </tr>
       </tbody>
@@ -55,6 +55,7 @@ export default {
       jobs: [],
       cities: [],
       isClicked: false,
+      isLogged: localStorage.getItem("adminLogged"),
     };
   },
   methods: {
@@ -87,7 +88,7 @@ export default {
       return city ? city.cityName : 'Unknown City';
     },
     applyForJob(jobID) {
-      this.$emit('apply-job', jobID); // Emit an event with the job ID
+      this.$emit('apply-job', jobID); 
     }
   }
 }

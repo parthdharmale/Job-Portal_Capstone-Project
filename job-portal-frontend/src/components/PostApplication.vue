@@ -4,11 +4,11 @@
     <form @submit.prevent="insertDetails" class="form">
       <div class="form-group">
         <label for="jobID">Enter Job ID:</label>
-        <input type="text" id="jobID" v-model="formData.jobID" required>
+        <input type="text" id="jobID" v-model="formData.jobID" required readonly>
       </div>
       <div class="form-group">
         <label for="candidateID">Enter Candidate ID:</label>
-        <input type="text" id="candidateID" v-model="formData.cid" required>
+        <input type="text" id="candidateID" v-model="formData.cid" required readonly>
       </div>
       <div class="form-group">
         <label for="resume">Enter Resume Link:</label>

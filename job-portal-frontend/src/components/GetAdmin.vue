@@ -45,7 +45,7 @@ export default {
       this.error = null;
 
       try {
-        const token = localStorage.getItem('authToken'); // Replace with how you manage auth tokens
+        const token = localStorage.getItem('authToken'); 
 
         if (!token) {
           throw new Error("Authentication token not found.");

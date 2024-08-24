@@ -55,7 +55,7 @@ namespace OnlineJobPortal.Controllers
             return Ok("Update Successful");
         }
 
-        [HttpDelete("deleteState/{StateID}")]
+        [HttpDelete("DeleteState/{StateID}")]
         public async Task<IActionResult> DeleteState([FromRoute] int StateID)
         {
             await _stateRepository.DeleteStateByIDAsync(StateID);

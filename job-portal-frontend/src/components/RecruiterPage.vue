@@ -64,6 +64,7 @@ export default {
           console.log('Recruiter Name:', this.rName);
           this.isAuthenticated = true;
           this.isEmailNotFound = false;
+          localStorage.setItem('adminLogged', "yes");
           this.message = 'Email verified successfully.';
         } else {
           this.recruiterName = null;

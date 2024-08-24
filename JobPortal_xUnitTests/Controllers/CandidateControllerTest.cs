@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using OnlineJobPortal.Controllers;
 using OnlineJobPortal.Models;
@@ -17,12 +18,13 @@ namespace JobPortal_xUnitTests.Controllers
     public class CandidateControllerTest
     {
         private readonly CandidateController _candidateController;
+        private readonly Mock<ILogger<CandidateController>> _loggerMock;
         private readonly Mock<ICandidateRepository> _candidateRepositoryMock;
 
         public CandidateControllerTest()
         {
             _candidateRepositoryMock = new Mock<ICandidateRepository>();
-            _candidateController = new CandidateController(_candidateRepositoryMock.Object);
+            _candidateController = new CandidateController(_candidateRepositoryMock.Object,_loggerMock.Object);
         }
 
         [Fact]

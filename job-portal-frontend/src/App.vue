@@ -18,6 +18,9 @@
         <GetJobVue @apply-job="showPostApplication" />
         <GetAppByCIDVue :candidateID="candidateID" />
         <UpdateCandidateVue :cid="candidateID"/>
+        <AddEducationDetailsVue :cid="candidateID"/>
+
+        
       </div>
 
       <div v-if="userType === 'candidate' && currentView === 'PostApplication'">
@@ -41,6 +44,7 @@ import CandidateLoginVue from './components/CandidateLogin.vue';
 import RecruiterPageVue from './components/RecruiterPage.vue';
 import UpdateCandidateVue from './components/UpdateCandidate.vue';
 import AdminPageVue from './components/AdminPage.vue';
+import AddEducationDetailsVue from './components/AddEducationDetails.vue';
 export default {
   name: 'App',
   components: {
@@ -52,7 +56,8 @@ export default {
     UpdateCandidateVue,
     AdminPageVue,
     // Navbar,
-    RecruiterPageVue
+    RecruiterPageVue,
+    AddEducationDetailsVue,
   },
   data() {
     return {
