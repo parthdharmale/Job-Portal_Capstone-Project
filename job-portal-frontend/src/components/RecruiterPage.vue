@@ -42,8 +42,12 @@ export default {
       otp: '',
       isAuthenticated: false,
       isEmailNotFound: false,
-      message: ''
+      message: '',
+      recruiters: []
     };
+  },
+  created(){
+    this.getRecruiters();
   },
   methods: {
     async verifyEmail() {
@@ -62,6 +66,9 @@ export default {
             console.log(response.data)
           this.rName = response.data.name;
           console.log('Recruiter Name:', this.rName);
+          console.log(this.email);
+          this.getRecruiterID(this.email);
+          // console.log(this.getRecruiterID(this.email));
           this.isAuthenticated = true;
           this.isEmailNotFound = false;
           localStorage.setItem('adminLogged', "yes");
@@ -78,6 +85,22 @@ export default {
         this.isAuthenticated = false;
         this.isEmailNotFound = false;
       }
+    },
+    getRecruiters(){
+      axios.get("https://localhost:7077/api/Recruiter/GetAllRecruiters")
+        .then(response => {
+          this.recruiters = response.data;
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    getRecruiterID(email){
+      const recruiter = this.recruiters.find(recruiter => recruiter.email === email);
+      console.log("Recruiter ID: " + recruiter.rid);
+      localStorage.setItem("RID", recruiter.rid);
+      // return id;
     }
   }
 }

@@ -3,8 +3,8 @@
     <h1>Open Jobs By Recruiter ID</h1>
     
     <div class="form-group">
-      <label for="rid">Enter Recruiter ID: </label>
-      <input v-model="rid" id="rid" type="text" placeholder="Enter Recruiter ID" />
+      <!-- <label for="rid">Enter Recruiter ID: </label>
+      <input v-model="rid" id="rid" type="text" placeholder="Enter Recruiter ID" /> -->
       <button @click="fetchJobs" class="submit-button">Fetch Jobs Posted by the Recruiter</button>
     </div>
 
@@ -55,7 +55,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      rid: '',
+      rid: localStorage.getItem("RID"),
       jobs: [],
       errorMessage: ''
     };

@@ -70,7 +70,7 @@ export default {
           console.log(error);
         });
 
-        // this.getCities();
+        this.getCities();
     },
     getCities() {
       axios.get("https://localhost:7077/api/City/GetAllCities")
@@ -83,6 +83,7 @@ export default {
         });
     },
     getCityName(cityID) {
+      // console.log("This is city id" +cityID);
       const city = this.cities.find(city => city.cityID === cityID);
       console.log("This is city id" +cityID);
       return city ? city.cityName : 'Unknown City';
